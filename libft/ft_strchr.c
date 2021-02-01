@@ -20,7 +20,7 @@
 
 char		*ft_strchr(const char *s, int c)
 {
-	int		i;
+	size_t	i;
 	char	*char_s;
 
 	if (s == NULL)
