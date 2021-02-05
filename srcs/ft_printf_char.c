@@ -31,7 +31,7 @@ static int	ft_write_char(char c, t_format_tag *tag, t_data *data)
 	if ((tag == NULL) || (data == NULL))
 		return (-1);
 	len = 1;
-	if (!(str = apply_alignment_char(tag, &len)))
+	if (!(str = ft_apply_alignment_char(tag, &len)))
 		return (-1);
 	data->len += len;
 	if (tag->flag_left)

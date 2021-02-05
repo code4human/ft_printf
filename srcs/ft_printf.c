@@ -31,7 +31,7 @@ static int			ft_printf_format(t_format_tag *tag, t_data *data)
 	return (-1);
 }
 
-static bool			ft_printf_write_text(t_data *data, size_t write_len)
+static bool			ft_write_text(t_data *data, size_t write_len)
 {
 	int				len;
 
@@ -45,7 +45,7 @@ static bool			ft_printf_write_text(t_data *data, size_t write_len)
 	return (true);
 }
 
-static int			ft_printf_print(t_data *data)
+static int			ft_print(t_data *data)
 {
 	t_format_tag	*tag;
 	char			*tag_start;
@@ -53,15 +53,15 @@ static int			ft_printf_print(t_data *data)
 
 	while (!(tag_start = ft_strchr(data->format, '%')))
 	{
-		if (!(ft_printf_write_text(data, tag_start - data->format))
+		if (!(ft_write_text(data, tag_start - data->format))
 			|| !(tag = ft_printf_get_tag(tag_start, data)))
 			return (-1);
-		result = ft_print_format(tag, data);
+		result = ft_printf_format(tag, data);
 		free(tag);
 		if (result == -1)
 			return (-1);
 	}
-	if (!ft_printf_write_text(data, ft_strlen(data->format)))
+	if (!ft_write_text(data, ft_strlen(data->format)))
 		return (-1);
 	return (data->len);
 }
@@ -75,7 +75,7 @@ int					ft_printf(const char *format, ...)
 	va_start(data.ap, format);
 	data.format = format;
 	data.len = 0;
-	if (ft_printf_print(&data) == -1)
+	if (ft_print(&data) == -1)
 		data.len = -1;
 	va_end(data.ap);
 	return (data.len);
