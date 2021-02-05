@@ -28,6 +28,7 @@
 # include <stdarg.h>
 # include <stdbool.h>
 # include <stdlib.h>
+# include <wchar.h>
 
 typedef struct	s_data
 {

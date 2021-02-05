@@ -18,14 +18,6 @@ static t_format_tag *ft_init_tag(void)
     return (tag);
 }
 
-static char		*ft_parse_tag_option(
-	char *str, t_format_tag *tag, t_data *data)
-{
-	if ((str == NULL) || (tag == NULL) || (data == NULL))
-		return (NULL);
-	/* tag(flag, width, precision, length) 파싱 로직 구현 */
-}
-
 static char 	*ft_parse_specifier(char *tag_str, t_format_tag *tag)
 {
 	char		*specifier_addr;
