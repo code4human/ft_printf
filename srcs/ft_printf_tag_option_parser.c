@@ -58,12 +58,57 @@ static char	*ft_parse_width(char *tag_str, t_format_tag *tag, t_data *data)
 
 static char *ft_parse_precision(char *tag_str, t_format_tag *tag, t_data *data)
 {
-	/* code */
+	char	*c_addr;
+	int		n;
+
+	if ((tag_str == NULL) || (tag == NULL) || (data == NULL))
+		return (NULL);
+	if (*tag_str != '.')
+		return (tag_str);
+	tag_str++;
+	if (*tag_str != '*')
+	{
+		n = va_arg(data->ap, int);
+		if (n < 0)
+			n = -1;
+		tag->precision = n;
+		return(++tag_str);
+	}
+	tag->precision = 0;
+	while (c_addr = ft_strchr(DIGIT_STR, *tag_str))
+	{
+		n = DIGIT_STR[c_addr - DIGIT_STR] - '0';
+		tag->precision = tag->precision * 10 + n;
+		tag_str++;
+	}
+	return (tag_str);
 }
 
 static char *ft_parse_length(char *tag_str, t_format_tag *tag)
 {
-	/* code */
+	if ((tag_str == NULL) || (tag == NULL))
+		return (NULL);
+	if (*tag_str == 'l')
+	{
+		tag->length = TAG_LENGTH_L;
+		tag_str++;
+		if (*tag_str == 'l')
+		{
+			tag->length = TAG_LENGTH_LL;
+			tag_str++;
+		}
+	}
+	else if (*tag_str == 'h')
+	{
+		tag->length = TAG_LENGTH_H;
+		tag_str++;
+		if (*tag_str == 'h')
+		{
+			tag->length = TAG_LENGTH_HH;
+			tag_str++;
+		}
+	}
+	return (tag_str);
 }
 
 char		*ft_parse_tag_option(
