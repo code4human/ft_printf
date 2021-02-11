@@ -50,6 +50,13 @@ static int	ft_write_char(char c, t_format_tag *tag, t_data *data)
 	return (len);
 }
 
+int		ft_printf_percent(t_format_tag *tag, t_data *data)
+{
+	if ((tag == NULL) || (data == NULL))
+		return (-1);
+	return (ft_write_char('%', tag, data));
+}
+
 int			ft_printf_char(t_format_tag *tag, t_data *data)
 {
 	int		c;
@@ -68,11 +75,4 @@ int			ft_printf_char(t_format_tag *tag, t_data *data)
 		c = va_arg(data->ap, int);
 	result = ft_write_char(c, tag, data);
 	return (result);
-}
-
-int		ft_printf_percent(t_format_tag *tag, t_data *data)
-{
-	if ((tag == NULL) || (data == NULL))
-		return (-1);
-	return (ft_write_char('%', tag, data));
 }
