@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int			ft_printf_format(t_format_tag *tag, t_data *data)
+static int			ft_write_format(t_format_tag *tag, t_data *data)
 {
 	if ((tag == NULL) || (data == NULL))
 		return (-1);
@@ -56,7 +56,7 @@ static int			ft_print(t_data *data)
 		if (!(ft_write_text(data, tag_start - data->format))
 			|| !(tag = ft_printf_get_tag(tag_start, data)))
 			return (-1);
-		result = ft_printf_format(tag, data);
+		result = ft_write_format(tag, data);
 		free(tag);
 		if (result == -1)
 			return (-1);

@@ -66,7 +66,7 @@ static char *ft_parse_precision(char *tag_str, t_format_tag *tag, t_data *data)
 	if (*tag_str != '.')
 		return (tag_str);
 	tag_str++;
-	if (*tag_str != '*')
+	if (*tag_str == '*')
 	{
 		n = va_arg(data->ap, int);
 		if (n < 0)
