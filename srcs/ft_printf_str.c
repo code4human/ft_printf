@@ -11,7 +11,7 @@ static int	ft_write_str(char **str, t_format_tag *tag, t_data *data)
 	len = ft_strlen(*str);
 	if (!apply_precision(str, &len, tag) || !apply_alignment(str, &len, tag))
 		return (-1);
-	data->len += len;
+	data->printf_len += len;
 	return (ft_putstr_fd(*str, 1));
 }
 

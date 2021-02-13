@@ -40,7 +40,7 @@ static bool			ft_write_text(t_data *data, size_t write_len)
 	len = write(1, data->format, write_len);
 	if (len < 0)
 		return (false);
-	data->len += len;
+	data->printf_len += len;
 	data->format += len;
 	return (true);
 }
@@ -63,7 +63,7 @@ static int			ft_print(t_data *data)
 	}
 	if (!ft_write_text(data, ft_strlen(data->format)))
 		return (-1);
-	return (data->len);
+	return (data->printf_len);
 }
 
 int					ft_printf(const char *format, ...)
@@ -74,9 +74,9 @@ int					ft_printf(const char *format, ...)
 		return (-1);
 	va_start(data.ap, format);
 	data.format = format;
-	data.len = 0;
+	data.printf_len = 0;
 	if (ft_print(&data) == -1)
-		data.len = -1;
+		data.printf_len = -1;
 	va_end(data.ap);
-	return (data.len);
+	return (data.printf_len);
 }

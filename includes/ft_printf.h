@@ -34,7 +34,7 @@ typedef struct	s_data
 {
 	va_list		ap;
 	const char	*format;
-	int			len;
+	int			printf_len;
 }				t_data;
 
 typedef struct	s_format_tag
