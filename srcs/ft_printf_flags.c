@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-bool		apply_alignment(char **str, size_t *len, t_format_tag *tag)
+bool		ft_apply_alignment(char **str, size_t *len, t_format_tag *tag)
 {
 	char	*temp;
 
@@ -78,5 +78,5 @@ bool		ft_apply_precision(char **str, size_t *len, t_format_tag *tag)
 		}
 		return (true);
 	}
-	return (apply_precision2(str, len, tag));
+	return (ft_apply_precision2(str, len, tag));
 }

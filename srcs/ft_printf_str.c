@@ -9,7 +9,7 @@ static int	ft_write_str(char **str, t_format_tag *tag, t_data *data)
 	if ((*str == NULL) && !(*str = ft_strdup("(null)")))   // "0x0"
 		return (-1);
 	len = ft_strlen(*str);
-	if (!apply_precision(str, &len, tag) || !apply_alignment(str, &len, tag))
+	if (!ft_apply_precision(str, &len, tag) || !ft_apply_alignment(str, &len, tag))
 		return (-1);
 	data->printf_len += len;
 	return (ft_putstr_fd(*str, 1));
