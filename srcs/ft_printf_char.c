@@ -19,6 +19,17 @@ static char	*ft_apply_alignment_char(t_format_tag *tag, size_t *len)
 
 	if (tag == NULL)
 		return (NULL);
+	if ((size_t)tag->width <= 1)
+		return (ft_strdup(""));
+	if (!(temp = (char *)malloc(tag->width)))
+		return (NULL);
+	c = ' ';
+	if (!(tag->flag_left) && (tag->flag_zero))
+		c = '0';
+	ft_memset(temp, c, tag->width - 1);
+	temp[tag->width - 1] = '\0';
+	*len = tag->width;
+	return(temp);
 }
 
 static int	ft_write_char(char c, t_format_tag *tag, t_data *data)
