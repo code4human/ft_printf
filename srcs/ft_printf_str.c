@@ -12,7 +12,7 @@ static int	ft_write_str(char **str, t_format_tag *tag, t_data *data)
 	if (!ft_apply_precision(str, &len, tag) || !ft_apply_alignment(str, &len, tag))
 		return (-1);
 	data->printf_len += len;
-	return (ft_putstr_fd(*str, 1));
+	return (ft_printf_putstr_fd(*str, 1));
 }
 
 int		ft_printf_wchar(wint_t c, t_format_tag *tag, t_data *data)

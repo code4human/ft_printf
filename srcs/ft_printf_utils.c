@@ -49,6 +49,13 @@ char		*ft_strchrset(const char *s, const char *set)
 	return (NULL);
 }
 
+int			ft_printf_putstr_fd(char *s, int fd)
+{
+	if (s == NULL || fd < 0)
+		return (-1);
+	return (write(fd, s, ft_strlen(s)));
+}
+
 size_t		ft_wchar_utf8_len(wint_t c)
 {
 	if (c < 128)
