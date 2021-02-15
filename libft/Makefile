@@ -6,7 +6,7 @@
 #    By: taeekim <taeekim@42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/13 04:36:24 by taeekim           #+#    #+#              #
-#    Updated: 2021/01/26 19:23:19 by taeekim          ###   ########.fr        #
+#    Updated: 2020/10/20 04:46:35 by taeekim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,10 +70,10 @@ OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OBJS)
-	$(AR) $@ $^
+	$(AR) $(ARFLAGS) $@ $^
 
 bonus : $(OBJS_BONUS)
-	$(AR) $(NAME) $^
+	$(AR) $(ARFLAGS) $(NAME) $^
 
 .c.o :
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)

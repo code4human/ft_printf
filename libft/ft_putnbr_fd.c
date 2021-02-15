@@ -43,8 +43,8 @@ void	ft_putnbr_fd(int n, int fd)
 **int	main(void)
 **{
 **	printf("====ft_putnbr_fd====\n");
-**	printf("====MIN_OF_INT====\n");
-**	ft_putnbr_fd(-2147483648, 1);
+**	printf("====-2147483648====\n");
+**	ft_putnbr_fd(INT_MIN_STR, 1);
 **	printf("\n====MAX_OF_INT====\n");
 **	ft_putnbr_fd(2147483647, 1);
 **	printf("\n");
