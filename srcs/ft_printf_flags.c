@@ -8,7 +8,7 @@ bool		ft_apply_alignment(char **str, size_t *len, t_format_tag *tag)
 		return (false);
 	if (*len >= (size_t)tag->width)
 		return (true);
-	if (!(temp = malloc(tag->width + 1)))
+	if (!(temp = (char *)malloc(tag->width + 1)))
 		return (false);
 	if (tag->flag_left)
 	{
@@ -18,8 +18,9 @@ bool		ft_apply_alignment(char **str, size_t *len, t_format_tag *tag)
 	}
 	else
 	{
-		ft_memset(temp, tag->flag_zero && (tag->precision < 0 ||
-				ft_strchr("eE", tag->specifier)) ? '0' : ' ',
+		ft_memset(temp, 
+				(tag->flag_zero) && 
+				((tag->precision < 0) || ft_strchr("eE", tag->specifier)) ? '0' : ' ',
 				tag->width - *len);
 		ft_strlcpy(temp + tag->width - *len, *str, *len + 1);
 	}
