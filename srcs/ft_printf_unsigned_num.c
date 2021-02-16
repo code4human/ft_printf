@@ -1,5 +1,18 @@
 #include "ft_printf.h"
 
+static bool	ft_move_0x(char **str, bool is_upper)
+{
+	char	*x_addr;
+
+	if ((str == NULL) || (*str == NULL) || !(x_addr = ft_strchrset(*str, "xX")))
+		return (false);
+	*(x_addr - 1) = (*str)[0];
+	(*str)[0] = '0';
+	*x_addr = (*str)[1];
+	(*str)[1] = is_upper ? 'X' : 'x';
+	return (true);
+}
+
 static int	ft_write_unsigned_num(char **str, t_format_tag *tag, 
 									t_data *data, bool is_zero)
 {
@@ -16,7 +29,8 @@ static int	ft_write_unsigned_num(char **str, t_format_tag *tag,
 	if (ft_strchr("xX", tag->specifier)
 		&& tag->flag_sharp && (tag->precision == -1)
 		&& tag->flag_zero && !(is_zero))
-		return (-1);
+		if (!ft_move_0x(str, (tag->specifier == 'X')))
+			return (-1);
 	data->printf_len += len;
 	return (ft_printf_putstr_fd(*str, 1));
 }
