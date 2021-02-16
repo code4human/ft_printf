@@ -23,12 +23,14 @@
 # define DIGIT_STR "0123456789"
 # define HEX_STR "0123456789abcdef"
 # define HEX_STR_UPPER "0123456789ABCDEF"
+# define LLONG_MIN_STR "-9223372036854775808"
 
 # include "libft.h"
 # include <stdarg.h>
 # include <stdbool.h>
 # include <stdlib.h>
 # include <wchar.h>
+# include <limits.h>
 
 typedef struct	s_data
 {
