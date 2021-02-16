@@ -81,3 +81,25 @@ bool		ft_apply_precision(char **str, size_t *len, t_format_tag *tag)
 	}
 	return (ft_apply_precision2(str, len, tag));
 }
+
+bool		ft_apply_flag_sharp(char **str, size_t *len, t_format_tag *tag, bool is_zero)
+{
+	char	*temp;
+
+	if ((str == NULL)|| (*str == NULL) || (tag == NULL))
+		return (false);
+	if (!tag->flag_sharp)
+		return (true);
+	if (ft_strchr("xXp", tag->specifier) && !is_zero)
+	{
+		if (!(temp = (char *)malloc(*len + 3)))
+			return (false);
+		ft_strlcpy(temp, ft_strchr("px", tag->specifier) ? "0x" : "0X", 3);
+		ft_strlcpy(temp + 2, *str, *len + 1);
+		free(*str);
+		*str = temp;
+		*len += 2;
+		return (true);
+	}
+	return (true);
+}
