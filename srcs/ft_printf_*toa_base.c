@@ -82,8 +82,7 @@ char	*ft_ulltoa_base(unsigned long long n, char *base)
 
 	if (base == NULL)
 		base = DIGIT_STR;
-	base_len = ft_strlen(base);
-	if (base_len < 2)
+	if ((base_len = ft_strlen(base))) < 2)
 		return (NULL);
 	len = get_unsigned_number_len(n, base_len);
 	if (!(result = (char *)malloc(sizeof(char) * (len + 1))))

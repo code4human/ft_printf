@@ -24,7 +24,8 @@ static int			ft_write_format(t_format_tag *tag, t_data *data)
 		return (ft_printf_str(tag, data));
 	else if (tag->specifier == 'p')
 		return (ft_printf_pointer(tag, data));
-	// else if ((tag->specifier == 'd') || (tag->specifier == 'i'))
+	else if ((tag->specifier == 'd') || (tag->specifier == 'i'))
+		return (ft_printf_signed_number(tag, data));
 	// else if (tag->specifier == 'u')
 	// else if (tag->specifier == 'x')
 	// else if (tag->specifier == 'X')
