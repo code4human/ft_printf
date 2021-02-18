@@ -6,12 +6,12 @@ static bool	ft_add_sign(char **str, size_t *len,
 	char	*temp;
 
 	if ((str == NULL) || (*str == NULL) || (tag == NULL))
-		return (-1);
+		return (false);
 	if (!(tag->flag_sign) && !(tag->flag_space) && !(is_negative))
 		return (true);
 	if (!(temp = (char *)malloc(*len + 2)))
 		return (false);
-	*len += 1;
+	*len++;
 	temp[0] = tag->flag_sign ? '+' : '-';
 	temp[0] = is_negative ? '-' : temp[0];
 	ft_strlcpy(temp + 1, *str, *len);
