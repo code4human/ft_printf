@@ -24,6 +24,8 @@ static int			ft_write_format(t_format_tag *tag, t_data *data)
 		return (ft_printf_str(tag, data));
 	else if (tag->specifier == 'p')
 		return (ft_printf_pointer(tag, data));
+	else if (tag->specifier == 'n')
+		return (ft_printf_pointer(tag, data));
 	else if (tag->specifier == 'u')
 		return (ft_printf_unsigned_number(tag, data, DIGIT_STR));
 	else if (tag->specifier == 'x')
@@ -34,7 +36,6 @@ static int			ft_write_format(t_format_tag *tag, t_data *data)
 		return (ft_printf_signed_number(tag, data));
 	else if (tag->specifier == 'e' || tag->specifier == 'E')
 		return (ft_printf_signed_number(tag, data));
-	// else if (tag->specifier == 'n')
 	return (-1);
 }
 
