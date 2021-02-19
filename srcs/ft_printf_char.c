@@ -61,7 +61,7 @@ static int	ft_write_char(char c, t_format_tag *tag, t_data *data)
 	return (len);
 }
 
-int		ft_printf_percent(t_format_tag *tag, t_data *data)
+int			ft_printf_percent(t_format_tag *tag, t_data *data)
 {
 	if ((tag == NULL) || (data == NULL))
 		return (-1);

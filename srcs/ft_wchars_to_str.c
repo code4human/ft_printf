@@ -1,3 +1,5 @@
+#include "ft_printf.h"
+
 static int  ft_utf8_2byte_to_str(char *dst, wint_t c)
 {
     dst[0] = (c >> 6) | 0b11000000;
@@ -38,7 +40,7 @@ static int	ft_utf8_str(char *dst, wint_t c)
 	return (-1);
 }
 
-char        ft_wchars_to_str(const wchar_t *ws)
+char		ft_wchars_to_str(const wchar_t *ws)
 {
     char    *str;
     size_t  len;
