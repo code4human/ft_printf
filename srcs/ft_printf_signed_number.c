@@ -38,7 +38,7 @@ static int	ft_move_sign(char *str, t_format_tag *tag, bool is_negative)
 	return (true);
 }
 
-static int	ft_write_signed_num(char **str, t_format_tag *tag, t_data *data)
+static int	ft_write_signed_number(char **str, t_format_tag *tag, t_data *data)
 {
 	size_t	len;
 	bool	is_negative;
@@ -86,7 +86,7 @@ int			ft_printf_signed_number(t_format_tag *tag, t_data *data)
 		arg = (int)va_arg(data->ap, int);
 	if (!(str = ft_lltoa_base((long long)arg, NULL)))
 		return (-1);
-	result = ft_write_signed_num(&str, tag, data);
+	result = ft_write_signed_number(&str, tag, data);
 	free(str);
 	return (result);
 }
