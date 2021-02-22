@@ -14,5 +14,55 @@ CC      = gcc
 CFLAGS  = -Wall -Wextra -Werror
 AR		= ar
 ARFLAGS	= cr
+RM		= rm -f
 
 NAME	= libftprintf.a
+LIBFT   = ./libft/libft.a
+
+FILES = ft_printf \
+	ft_printf_tag_parser \
+	ft_printf_tag_option_parser \
+	ft_printf_flags \
+	ft_printf_char \
+	ft_printf_str \
+	ft_wchars_to_str \
+	ft_printf_unsigned_number \
+	ft_printf_signed_number \
+	ft_printf_*toa_base \
+	ft_printf_utils
+
+SRCS_DIR = ./srcs/
+SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
+
+OBJS_DIR = ./objs/
+OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
+
+all : $(NAME)
+
+$(NAME): $(LIBFT) $(OBJS)
+	$(AR) $(ARFLAGS) $@ $(OBJS)
+
+bonus: $(NAME)
+
+$(OBJS_DIR)%.o: $(SRCS_DIR)%.c
+	mkdir -p $(OBJS_DIR)
+	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
+
+$(LIBFT):
+	$(MAKE) -C ./libft all
+	$(MAKE) -C ./libft bonus
+
+clean:
+	$(RM) $(OBJS)
+	$(MAKE) -C ./libft clean
+
+fclean:
+	$(RM) $(OBJS)
+	$(MAKE) -C ./libft fclean
+
+re : fclean all
+
+norm :
+	norminette -R CheckForbiddenSourceHeader 
+
+.PHONY : all clean fclean re bonus norm

@@ -75,8 +75,10 @@ char			ft_wchars_to_str(const wchar_t *ws);
 
 int				ft_printf_pointer(t_format_tag *tag, t_data *data);
 int				ft_printf_unsigned_number(t_format_tag *tag, t_data *data, char *base);
+char			*ft_ulltoa_base(unsigned long long n, char *base);
 
 int				ft_printf_signed_number(t_format_tag *tag, t_data *data);
+char			*ft_lltoa_base(long long n, char *base);
 
 /* functions for utility */
 char			*ft_strndup(const char *s1, size_t n);
