@@ -25,7 +25,7 @@ int		ft_printf_wchar(wint_t c, t_format_tag *tag, t_data *data)
 		return (-1);
 	wstr[0] = c;
 	wstr[1] = L'\0';
-	if(!(str = ft_wchars_to_str(wstr)))
+	if (!(str = ft_wchars_to_str(wstr)))
 		return (-1);
 	result = ft_write_str(&str, tag, data);
 	free(str);

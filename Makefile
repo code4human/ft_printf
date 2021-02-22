@@ -40,6 +40,7 @@ OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
 all : $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
+	cp $(LIBFT) $(NAME)
 	$(AR) $(ARFLAGS) $@ $(OBJS)
 
 bonus: $(NAME)

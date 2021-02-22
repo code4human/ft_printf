@@ -75,7 +75,7 @@ static char *ft_parse_precision(char *tag_str, t_format_tag *tag, t_data *data)
 		return(++tag_str);
 	}
 	tag->precision = 0;
-	while (c_addr = ft_strchr(DIGIT_STR, *tag_str))
+	while ((c_addr = ft_strchr(DIGIT_STR, *tag_str)))
 	{
 		n = DIGIT_STR[c_addr - DIGIT_STR] - '0';
 		tag->precision = tag->precision * 10 + n;

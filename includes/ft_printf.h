@@ -25,7 +25,7 @@
 # define HEX_STR_UPPER "0123456789ABCDEF"
 # define LLONG_MIN_STR "-9223372036854775808"
 
-# include "libft.h"
+# include "../libft/libft.h"
 # include <stdarg.h>
 # include <stdbool.h>
 # include <stdlib.h>
@@ -71,7 +71,7 @@ int				ft_printf_char(t_format_tag *tag, t_data *data);
 int				ft_printf_percent(t_format_tag *tag, t_data *data);
 int				ft_printf_str(t_format_tag *tag, t_data *data);
 int				ft_printf_wchar(wint_t c, t_format_tag *tag, t_data *data);
-char			ft_wchars_to_str(const wchar_t *ws);
+char			*ft_wchars_to_str(const wchar_t *ws);
 
 int				ft_printf_pointer(t_format_tag *tag, t_data *data);
 int				ft_printf_unsigned_number(t_format_tag *tag, t_data *data, char *base);

@@ -47,13 +47,13 @@ static int	ft_write_char(char c, t_format_tag *tag, t_data *data)
 	data->printf_len += len;
 	if (tag->flag_left)
 	{
-		result1 = write(1, c, 1);
+		result1 = write(1, &c, 1);
 		result2 = write(1, str, ft_strlen(str));
 	}
 	else
 	{
 		result2 = write(1, str, ft_strlen(str));
-		result1 = write(1, c, 1);
+		result1 = write(1, &c, 1);
 	}
 	free(str);
 	if ((result1 != 1) || (result2 < 0))

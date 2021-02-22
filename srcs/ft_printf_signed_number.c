@@ -11,7 +11,7 @@ static bool	ft_add_sign(char **str, size_t *len,
 		return (true);
 	if (!(temp = (char *)malloc(*len + 2)))
 		return (false);
-	*len++;
+	*len += 1;
 	temp[0] = tag->flag_sign ? '+' : '-';
 	temp[0] = is_negative ? '-' : temp[0];
 	ft_strlcpy(temp + 1, *str, *len);
@@ -25,10 +25,10 @@ static int	ft_move_sign(char *str, t_format_tag *tag, bool is_negative)
 	char	*sign_addr;
 	char	c;
 
-	if ((str == NULL) || (*str == NULL))
+	if ((str == NULL) || (*str == '\0'))
 		return (-1);
 	if (!(tag->flag_zero) || 
-		!(tag->flag_sign) && !(tag->flag_space) && !(is_negative))
+		(!(tag->flag_sign) && !(tag->flag_space) && !(is_negative)))
 		return (true);
 	if (!(sign_addr = ft_strchrset(str, tag->flag_sign ? "+- " : "+-")))
 		return (false);
@@ -60,7 +60,7 @@ static int	ft_write_signed_number(char **str, t_format_tag *tag, t_data *data)
 	if (!ft_apply_precision(str, &len, tag)
 		|| !ft_add_sign(str, &len, tag, is_negative)
 		|| !ft_apply_alignment(str, &len, tag)
-		|| (tag->precision < 0) && !(ft_move_sign(*str, tag, is_negative)))
+		|| ((tag->precision < 0) && !(ft_move_sign(*str, tag, is_negative))))
 		return (-1);
 	data->printf_len += len;
 	return (ft_printf_putstr_fd(*str, 1));
