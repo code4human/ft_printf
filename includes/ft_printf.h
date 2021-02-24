@@ -25,7 +25,7 @@
 # define HEX_STR_UPPER "0123456789ABCDEF"
 # define LLONG_MIN_STR "-9223372036854775808"
 
-# include "../libft/libft.h"
+# include "libft.h"
 # include <stdarg.h>
 # include <stdbool.h>
 # include <stdlib.h>

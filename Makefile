@@ -19,6 +19,9 @@ RM		= rm -f
 NAME	= libftprintf.a
 LIBFT   = ./libft/libft.a
 
+INCLUDES = -I./includes -I./libft
+LIB_FLAGS = -L./libft -lft -L./ -lftprintf
+
 FILES = ft_printf \
 	ft_printf_tag_parser \
 	ft_printf_tag_option_parser \
@@ -66,4 +69,7 @@ re : fclean all
 norm :
 	norminette -R CheckForbiddenSourceHeader 
 
-.PHONY : all clean fclean re bonus norm
+test_taeekim: $(NAME)
+	$(CC) $(CFLAGS) 
+
+.PHONY : all clean fclean re bonus norm test_taeekim
