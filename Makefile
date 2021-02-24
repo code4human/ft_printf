@@ -63,6 +63,7 @@ clean:
 fclean:
 	$(RM) $(OBJS)
 	$(MAKE) -C ./libft fclean
+	$(RM) -r a.out a.out.dSYM leaks_result
 
 re : fclean all
 
@@ -70,6 +71,6 @@ norm :
 	norminette -R CheckForbiddenSourceHeader 
 
 test_taeekim: $(NAME)
-	$(CC) $(CFLAGS) 
+	$(CC) $(CFLAGS) $(INCLUDES) $(LIB_FLAGS) test_taeekim.c && ./a.out
 
 .PHONY : all clean fclean re bonus norm test_taeekim
