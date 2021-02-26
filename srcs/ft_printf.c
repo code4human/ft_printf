@@ -59,7 +59,7 @@ static int			ft_write(t_data *data)
 	char			*tag_start;
 	int				result;
 
-	while ((tag_start = ft_strchr(data->format, '%')) != NULL)
+	while ((tag_start = ft_strchr(data->format, '%')))
 	{
 		if (!(ft_write_text(data, tag_start - data->format))
 			|| !(tag = ft_printf_get_tag(tag_start, data)))

@@ -4,7 +4,7 @@ static t_format_tag *ft_init_tag(void)
 {
     t_format_tag    *tag;
 
-    if (!(tag = malloc(sizeof(t_format_tag))))
+    if (!(tag = (t_format_tag *)malloc(sizeof(t_format_tag))))
         return (NULL);
     tag->flag_sign = false;
     tag->flag_left = false;

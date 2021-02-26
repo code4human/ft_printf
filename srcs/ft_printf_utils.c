@@ -15,7 +15,7 @@ char		*ft_strndup(const char *s1, size_t n)
 	if (n <= 0 || !(len = ft_strlen(s1)))
 		return (ft_strdup(""));
 	len = n < len ? n : len;
-	if (!(s2 = malloc(len + 1)))
+	if (!(s2 = (char *)malloc(len + 1)))
 		return (NULL);
 	i = 0;
 	while (i < len)
@@ -38,7 +38,7 @@ char		*ft_strchrset(const char *s, const char *set)
 	while (s[i] != '\0')
 	{
 		j = 0;
-		while (set[i] != '\0')
+		while (set[j] != '\0')
 		{
 			if (s[i] == set[j])
 				return ((char *)s + i);

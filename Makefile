@@ -20,7 +20,7 @@ NAME	= libftprintf.a
 LIBFT   = ./libft/libft.a
 
 INCLUDES = -I./includes -I./libft
-LIB_FLAGS = -L./libft -lft -L./ -lftprintf
+LIB_FLAGS = -L./libft -lft -L. -lftprintf
 
 FILES = ft_printf \
 	ft_printf_tag_parser \
@@ -49,7 +49,7 @@ $(NAME): $(LIBFT) $(OBJS)
 bonus: $(NAME)
 
 $(OBJS_DIR)%.o: $(SRCS_DIR)%.c
-	mkdir -p $(OBJS_DIR)
+	@mkdir -p $(OBJS_DIR)
 	$(CC) $(CFLAGS) $(INCLUDES) -c -o $@ $<
 
 $(LIBFT):
@@ -61,7 +61,7 @@ clean:
 	$(MAKE) -C ./libft clean
 
 fclean:
-	$(RM) $(OBJS)
+	$(RM) $(NAME)
 	$(MAKE) -C ./libft fclean
 	$(RM) -r a.out a.out.dSYM leaks_result
 
