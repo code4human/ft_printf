@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_tag_option_parser.c                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taeekim <taeekim@42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/26 15:25:34 by taeekim           #+#    #+#             */
+/*   Updated: 2021/02/26 15:29:52 by taeekim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static char	*ft_parse_flags(char *tag_str, t_format_tag *tag)
@@ -49,14 +61,14 @@ static char	*ft_parse_width(char *tag_str, t_format_tag *tag, t_data *data)
 		return (tag_str);
 	while ((c_addr = ft_strchr(DIGIT_STR, *tag_str)))
 	{
-		n = DIGIT_STR[c_addr - DIGIT_STR] - '0'; 
+		n = DIGIT_STR[c_addr - DIGIT_STR] - '0';
 		tag->width = tag->width * 10 + n;
 		tag_str++;
 	}
 	return (tag_str);
 }
 
-static char *ft_parse_precision(char *tag_str, t_format_tag *tag, t_data *data)
+static char	*ft_parse_precision(char *tag_str, t_format_tag *tag, t_data *data)
 {
 	char	*c_addr;
 	int		n;
@@ -72,7 +84,7 @@ static char *ft_parse_precision(char *tag_str, t_format_tag *tag, t_data *data)
 		if (n < 0)
 			n = -1;
 		tag->precision = n;
-		return(++tag_str);
+		return (++tag_str);
 	}
 	tag->precision = 0;
 	while ((c_addr = ft_strchr(DIGIT_STR, *tag_str)))
@@ -84,7 +96,7 @@ static char *ft_parse_precision(char *tag_str, t_format_tag *tag, t_data *data)
 	return (tag_str);
 }
 
-static char *ft_parse_length(char *tag_str, t_format_tag *tag)
+static char	*ft_parse_length(char *tag_str, t_format_tag *tag)
 {
 	if ((tag_str == NULL) || (tag == NULL))
 		return (NULL);

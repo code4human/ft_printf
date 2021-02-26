@@ -6,7 +6,7 @@
 /*   By: taeekim <taeekim@42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:24:46 by taeekim           #+#    #+#             */
-/*   Updated: 2021/01/26 19:57:00 by taeekim          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:38:31 by taeekim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static char	*ft_apply_alignment_char(t_format_tag *tag, size_t *len)
 	ft_memset(temp, c, tag->width - 1);
 	temp[tag->width - 1] = '\0';
 	*len = tag->width;
-	return(temp);
+	return (temp);
 }
 
 static int	ft_write_char(char c, t_format_tag *tag, t_data *data)

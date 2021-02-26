@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_unsigned_number.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taeekim <taeekim@42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/26 15:32:33 by taeekim           #+#    #+#             */
+/*   Updated: 2021/02/26 15:32:37 by taeekim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static bool	ft_move_0x(char **str, bool is_upper)
@@ -13,12 +25,12 @@ static bool	ft_move_0x(char **str, bool is_upper)
 	return (true);
 }
 
-static int	ft_write_unsigned_number(char **str, t_format_tag *tag, 
+static int	ft_write_unsigned_number(char **str, t_format_tag *tag,
 									t_data *data, bool is_zero)
 {
 	size_t	len;
 
-	if ((str == NULL) || (*str == NULL) || 
+	if ((str == NULL) || (*str == NULL) ||
 			(tag == NULL) || (data == NULL))
 		return (-1);
 	len = ft_strlen(*str);
@@ -57,7 +69,8 @@ int			ft_printf_pointer(t_format_tag *tag, t_data *data)
 	return (result);
 }
 
-int			ft_printf_unsigned_number(t_format_tag *tag, t_data *data, char *base)
+int			ft_printf_unsigned_number(
+				t_format_tag *tag, t_data *data, char *base)
 {
 	char				*str;
 	unsigned long long	arg;

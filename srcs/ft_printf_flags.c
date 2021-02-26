@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_flags.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taeekim <taeekim@42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/26 15:37:41 by taeekim           #+#    #+#             */
+/*   Updated: 2021/02/26 15:39:47 by taeekim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 bool		ft_apply_alignment(char **str, size_t *len, t_format_tag *tag)
 {
 	char	*temp;
 
-	if ((str == NULL)|| (*str == NULL) || (tag == NULL) || (len == NULL))
+	if ((str == NULL) || (*str == NULL) || (tag == NULL) || (len == NULL))
 		return (false);
 	if (*len >= (size_t)tag->width)
 		return (true);
@@ -18,10 +30,9 @@ bool		ft_apply_alignment(char **str, size_t *len, t_format_tag *tag)
 	}
 	else
 	{
-		ft_memset(temp, 
-				((tag->flag_zero) && 
-				((tag->precision < 0) || ft_strchr("eE", tag->specifier))) ? '0' : ' ',
-				tag->width - *len);
+		ft_memset(temp, ((tag->flag_zero) &&
+				((tag->precision < 0) || ft_strchr("eE", tag->specifier))) ?
+				'0' : ' ', tag->width - *len);
 		ft_strlcpy(temp + tag->width - *len, *str, *len + 1);
 	}
 	free(*str);
@@ -63,7 +74,7 @@ bool		ft_apply_precision(char **str, size_t *len, t_format_tag *tag)
 {
 	char	*temp;
 
-	if ((str == NULL)|| (*str == NULL) || (tag == NULL))
+	if ((str == NULL) || (*str == NULL) || (tag == NULL))
 		return (false);
 	if (tag->precision < 0)
 		return (true);
@@ -82,11 +93,12 @@ bool		ft_apply_precision(char **str, size_t *len, t_format_tag *tag)
 	return (ft_apply_precision2(str, len, tag));
 }
 
-bool		ft_apply_flag_sharp(char **str, size_t *len, t_format_tag *tag, bool is_zero)
+bool		ft_apply_flag_sharp(
+		char **str, size_t *len, t_format_tag *tag, bool is_zero)
 {
 	char	*temp;
 
-	if ((str == NULL)|| (*str == NULL) || (tag == NULL))
+	if ((str == NULL) || (*str == NULL) || (tag == NULL))
 		return (false);
 	if (!tag->flag_sharp)
 		return (true);

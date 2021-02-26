@@ -6,7 +6,7 @@
 /*   By: taeekim <taeekim@42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 19:51:54 by taeekim           #+#    #+#             */
-/*   Updated: 2021/01/26 19:52:57 by taeekim          ###   ########.fr       */
+/*   Updated: 2021/02/26 15:07:40 by taeekim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,29 @@ typedef struct	s_format_tag
 	char		specifier;
 }				t_format_tag;
 
-/* ft_printf */
+/*
+** ft_printf
+*/
 int				ft_printf(const char *format, ...);
 
-/* functions to parse format's tag */
+/*
+** functions to parse format's tag
+*/
 t_format_tag	*ft_printf_get_tag(const char *start, t_data *data);
 char			*ft_parse_tag_option(
 				char *str, t_format_tag *tag, t_data *data);
 
-/* functions to apply precision, width, flags */
+/*
+** functions to apply precision, width, flags
+*/
 bool			ft_apply_alignment(char **str, size_t *len, t_format_tag *tag);
 bool			ft_apply_precision(char **str, size_t *len, t_format_tag *tag);
 bool			ft_apply_flag_sharp(
 				char **str, size_t *len, t_format_tag *tag, bool is_zero);
 
-/* functions to write format, up to conversions specifier */
+/*
+** functions to write format, up to conversions specifier
+*/
 int				ft_printf_char(t_format_tag *tag, t_data *data);
 int				ft_printf_percent(t_format_tag *tag, t_data *data);
 int				ft_printf_str(t_format_tag *tag, t_data *data);
@@ -74,13 +82,16 @@ int				ft_printf_wchar(wint_t c, t_format_tag *tag, t_data *data);
 char			*ft_wchars_to_str(const wchar_t *ws);
 
 int				ft_printf_pointer(t_format_tag *tag, t_data *data);
-int				ft_printf_unsigned_number(t_format_tag *tag, t_data *data, char *base);
+int				ft_printf_unsigned_number(
+				t_format_tag *tag, t_data *data, char *base);
 char			*ft_ulltoa_base(unsigned long long n, char *base);
 
 int				ft_printf_signed_number(t_format_tag *tag, t_data *data);
 char			*ft_lltoa_base(long long n, char *base);
 
-/* functions for utility */
+/*
+** functions for utility
+*/
 char			*ft_strndup(const char *s1, size_t n);
 char			*ft_strchrset(const char *s, const char *set);
 int				ft_printf_putstr_fd(char *s, int fd);

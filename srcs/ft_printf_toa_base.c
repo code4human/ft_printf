@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_toa_base.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taeekim <taeekim@42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/26 15:48:42 by taeekim           #+#    #+#             */
+/*   Updated: 2021/02/26 15:51:13 by taeekim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static size_t	get_number_len(long long n, long long base_len)
@@ -21,7 +33,7 @@ static size_t	get_number_len(long long n, long long base_len)
 static size_t	get_unsigned_number_len(
 				unsigned long long n, unsigned long long base_len)
 {
-	size_t			len;
+	size_t		len;
 
 	len = 0;
 	while (n >= base_len)
@@ -58,10 +70,10 @@ static char		*make_num_str(long long n, size_t len,
 	return (result);
 }
 
-char	*ft_lltoa_base(long long n, char *base)
+char			*ft_lltoa_base(long long n, char *base)
 {
-	size_t	len;
-	size_t	base_len;
+	size_t		len;
+	size_t		base_len;
 
 	if (base == NULL)
 		base = DIGIT_STR;
@@ -73,12 +85,12 @@ char	*ft_lltoa_base(long long n, char *base)
 	return (make_num_str(n, len, base, base_len));
 }
 
-char	*ft_ulltoa_base(unsigned long long n, char *base)
+char			*ft_ulltoa_base(unsigned long long n, char *base)
 {
-	size_t	len;
-	size_t	base_len;
-	size_t	i;
-	char	*result;
+	size_t		len;
+	size_t		base_len;
+	size_t		i;
+	char		*result;
 
 	if (base == NULL)
 		base = DIGIT_STR;

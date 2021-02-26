@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_signed_number.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taeekim <taeekim@42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/26 15:27:41 by taeekim           #+#    #+#             */
+/*   Updated: 2021/02/26 15:30:44 by taeekim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 static bool	ft_add_sign(char **str, size_t *len,
@@ -27,7 +39,7 @@ static int	ft_move_sign(char *str, t_format_tag *tag, bool is_negative)
 
 	if ((str == NULL) || (*str == '\0'))
 		return (-1);
-	if (!(tag->flag_zero) || 
+	if (!(tag->flag_zero) ||
 		(!(tag->flag_sign) && !(tag->flag_space) && !(is_negative)))
 		return (true);
 	if (!(sign_addr = ft_strchrset(str, tag->flag_sign ? "+- " : "+-")))
@@ -44,7 +56,7 @@ static int	ft_write_signed_number(char **str, t_format_tag *tag, t_data *data)
 	bool	is_negative;
 	char	*temp;
 
-	if ((str == NULL) || (*str == NULL) || 
+	if ((str == NULL) || (*str == NULL) ||
 			(tag == NULL) || (data == NULL))
 		return (-1);
 	is_negative = false;

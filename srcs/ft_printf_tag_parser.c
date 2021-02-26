@@ -1,27 +1,39 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf_tag_parser.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taeekim <taeekim@42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/26 15:18:46 by taeekim           #+#    #+#             */
+/*   Updated: 2021/02/26 16:22:47 by taeekim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static t_format_tag *ft_init_tag(void)
+static t_format_tag	*ft_init_tag(void)
 {
-    t_format_tag    *tag;
+	t_format_tag	*tag;
 
-    if (!(tag = (t_format_tag *)malloc(sizeof(t_format_tag))))
-        return (NULL);
-    tag->flag_sign = false;
-    tag->flag_left = false;
-    tag->flag_space = false;
-    tag->flag_sharp = false;
-    tag->flag_zero = false;
-    tag->width = 0;
-    tag->precision = -1;
-    tag->length = 0;
-    tag->specifier = '\0';
-    return (tag);
+	if (!(tag = (t_format_tag *)malloc(sizeof(t_format_tag))))
+		return (NULL);
+	tag->flag_sign = false;
+	tag->flag_left = false;
+	tag->flag_space = false;
+	tag->flag_sharp = false;
+	tag->flag_zero = false;
+	tag->width = 0;
+	tag->precision = -1;
+	tag->length = 0;
+	tag->specifier = '\0';
+	return (tag);
 }
 
-static char 	*ft_parse_specifier(char *tag_str, t_format_tag *tag)
+static char			*ft_parse_specifier(char *tag_str, t_format_tag *tag)
 {
-	char		*specifier_addr;
-	char 		c;
+	char			*specifier_addr;
+	char			c;
 
 	if ((tag_str == NULL) || (tag == NULL)
 		|| !(specifier_addr = ft_strchr(TAG_SPECIFIER_SET, *tag_str)))
@@ -29,7 +41,7 @@ static char 	*ft_parse_specifier(char *tag_str, t_format_tag *tag)
 	c = TAG_SPECIFIER_SET[specifier_addr - TAG_SPECIFIER_SET];
 	tag->specifier = c;
 	tag_str++;
-	return (tag_str);	
+	return (tag_str);
 }
 
 static t_format_tag	*ft_parse_tag(char *tag_str, t_data *data)

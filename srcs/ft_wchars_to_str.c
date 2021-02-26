@@ -1,13 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_wchars_to_str.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: taeekim <taeekim@42seoul.kr>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/02/26 15:46:19 by taeekim           #+#    #+#             */
+/*   Updated: 2021/02/26 16:20:28 by taeekim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static int  ft_utf8_2byte_to_str(char *dst, wint_t c)
+static int		ft_utf8_2byte_to_str(char *dst, wint_t c)
 {
-    dst[0] = (c >> 6) | 0b11000000;
+	dst[0] = (c >> 6) | 0b11000000;
 	dst[1] = (c & 0b111111) | 0b10000000;
 	return (2);
 }
 
-static int	ft_utf8_3byte_to_str(char *dst, wint_t c)
+static int		ft_utf8_3byte_to_str(char *dst, wint_t c)
 {
 	dst[0] = (c >> 12) | 0b11100000;
 	dst[1] = ((c >> 6) & 0b111111) | 0b10000000;
@@ -15,7 +27,7 @@ static int	ft_utf8_3byte_to_str(char *dst, wint_t c)
 	return (3);
 }
 
-static int	ft_utf8_4byte_to_str(char *dst, wint_t c)
+static int		ft_utf8_4byte_to_str(char *dst, wint_t c)
 {
 	dst[0] = (c >> 18) | 0b11110000;
 	dst[1] = ((c >> 12) & 0b111111) | 0b10000000;
@@ -24,7 +36,7 @@ static int	ft_utf8_4byte_to_str(char *dst, wint_t c)
 	return (4);
 }
 
-static int	ft_utf8_str(char *dst, wint_t c)
+static int		ft_utf8_str(char *dst, wint_t c)
 {
 	if (c < 128)
 	{
@@ -40,20 +52,20 @@ static int	ft_utf8_str(char *dst, wint_t c)
 	return (-1);
 }
 
-char		*ft_wchars_to_str(const wchar_t *ws)
+char			*ft_wchars_to_str(const wchar_t *ws)
 {
-    char    *str;
-    size_t  len;
-    size_t  i;
-    size_t  j;
-    int     temp;
+	char		*str;
+	size_t		len;
+	size_t		i;
+	size_t		j;
+	int			temp;
 
-    if (ws == NULL)
-        return (NULL);
-    len = ft_wstr_utf8_len(ws);
+	if (ws == NULL)
+		return (NULL);
+	len = ft_wstr_utf8_len(ws);
 	if (!(str = (char *)malloc(len + 1)))
 		return (NULL);
-    i = 0;
+	i = 0;
 	j = 0;
 	while (ws[i] != L'\0')
 	{
