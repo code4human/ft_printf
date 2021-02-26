@@ -117,7 +117,7 @@ char		*ft_parse_tag_option(
 	if ((str == NULL) || (tag == NULL) || (data == NULL)
 		|| !(str = ft_parse_flags(str, tag))
 		|| !(str = ft_parse_width(str, tag, data))
-		|| !(str - ft_parse_precision(str, tag, data))
+		|| !(str = ft_parse_precision(str, tag, data))
 		|| !(str = ft_parse_length(str, tag)))
 		return (NULL);
 	return (str);
