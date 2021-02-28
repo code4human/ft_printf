@@ -31,6 +31,7 @@ FILES = ft_printf \
 	ft_wchars_to_str \
 	ft_printf_unsigned_number \
 	ft_printf_signed_number \
+	ft_printf_count \
 	ft_printf_*toa_base \
 	ft_printf_utils
 

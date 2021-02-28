@@ -89,6 +89,8 @@ char			*ft_ulltoa_base(unsigned long long n, char *base);
 int				ft_printf_signed_number(t_format_tag *tag, t_data *data);
 char			*ft_lltoa_base(long long n, char *base);
 
+int				ft_printf_count(t_format_tag *tag, t_data *data);
+
 /*
 ** functions for utility
 */
