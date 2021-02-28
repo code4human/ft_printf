@@ -24,7 +24,7 @@ static bool	ft_add_sign(char **str, size_t *len,
 	if (!(temp = (char *)malloc(*len + 2)))
 		return (false);
 	*len += 1;
-	temp[0] = tag->flag_sign ? '+' : '-';
+	temp[0] = tag->flag_sign ? '+' : ' ';
 	temp[0] = is_negative ? '-' : temp[0];
 	ft_strlcpy(temp + 1, *str, *len);
 	free(*str);
@@ -42,7 +42,7 @@ static int	ft_move_sign(char *str, t_format_tag *tag, bool is_negative)
 	if (!(tag->flag_zero) ||
 		(!(tag->flag_sign) && !(tag->flag_space) && !(is_negative)))
 		return (true);
-	if (!(sign_addr = ft_strchrset(str, tag->flag_sign ? "+- " : "+-")))
+	if (!(sign_addr = ft_strchrset(str, tag->flag_space ? "+- " : "+-")))
 		return (false);
 	c = *sign_addr;
 	*sign_addr = str[0];
