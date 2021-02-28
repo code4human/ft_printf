@@ -26,14 +26,20 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n)
 
 	u1 = (unsigned char *)s1;
 	u2 = (unsigned char *)s2;
+	if ((u1 == NULL) && (u2 == NULL))
+		return (0);
+	else if ((u1 == NULL) || (u2 == NULL))
+		return (u1 == NULL ? -1 : 1);
 	i = 0;
-	while (((s1[i] != '\0') || (s2[i] != '\0')) && (i < n))
+	while (((u1[i] != '\0') || (u2[i] != '\0')) && (i < n))
 	{
-		if (s1[i] != s2[i])
+		if (u1[i] != u2[i])
 			return (u1[i] - u2[i]);
 		i++;
 	}
-	return (0);
+	if (i == n)
+		return (0);
+	return (u1[i] - u2[i]);
 }
 
 /*
