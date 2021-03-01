@@ -53,7 +53,7 @@ static bool			ft_write_text(t_data *data, size_t write_len)
 	return (true);
 }
 
-static int			ft_write(t_data *data)
+static int			ft_printf_write(t_data *data)
 {
 	t_format_tag	*tag;
 	char			*tag_start;
@@ -83,7 +83,7 @@ int					ft_printf(const char *format, ...)
 	va_start(data.ap, format);
 	data.format = format;
 	data.printf_len = 0;
-	if (ft_write(&data) == -1)
+	if (ft_printf_write(&data) == -1)
 		data.printf_len = -1;
 	va_end(data.ap);
 	return (data.printf_len);
