@@ -79,8 +79,8 @@ int			ft_printf_unsigned_number(
 	if ((tag == NULL) || (data == NULL))
 		return (-1);
 	arg = va_arg(data->ap, unsigned long long);
-        if (tag->length == TAG_LENGTH_HH)
-                str = ft_ulltoa_base((unsigned char)arg, base);
+	if (tag->length == TAG_LENGTH_HH)
+		str = ft_ulltoa_base((unsigned char)arg, base);
 	else if (tag->length == TAG_LENGTH_H)
 		str = ft_ulltoa_base((unsigned short)arg, base);
 	else if (tag->length == TAG_LENGTH_L)
