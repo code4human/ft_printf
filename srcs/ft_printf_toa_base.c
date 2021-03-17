@@ -77,8 +77,6 @@ char			*ft_lltoa_base(long long n, char *base)
 
 	if (base == NULL)
 		base = DIGIT_STR;
-	if ((n == LLONG_MIN) && ft_strncmp(base, DIGIT_STR, ft_strlen(DIGIT_STR)))
-		return (LLONG_MIN_STR);
 	if ((base_len = ft_strlen(base)) < 2)
 		return (NULL);
 	len = get_number_len(n, base_len);
