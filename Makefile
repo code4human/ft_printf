@@ -65,7 +65,7 @@ clean:
 fclean:
 	$(RM) $(NAME)
 	$(MAKE) -C ./libft fclean
-	$(RM) -r a.out
+	@$(RM) a.out leaks_result
 
 re : fclean all
 

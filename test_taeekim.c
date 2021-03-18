@@ -9,7 +9,13 @@ int main(void)
 {
 	int result_f;
 	int result_r;
+	int d = 123, fn, rn; 
 	char *str = "123";
+
+	ft_printf("f = [%d%n]\n", d, &fn);
+	   printf("r = [%d%n]\n", d, &rn);
+	printf("result_f = %d digits\nresult_r = %d digits\n\n", fn, rn);
+
 
 	ft_printf("f = [%20p]\n", str);
 	   printf("r = [%20p]\n", str);
