@@ -60,11 +60,12 @@ $(LIBFT):
 clean:
 	$(RM) $(OBJS)
 	$(MAKE) -C ./libft clean
+	@rmdir $(OBJS_DIR)
 
 fclean:
 	$(RM) $(NAME)
 	$(MAKE) -C ./libft fclean
-	$(RM) -r a.out a.out.dSYM leaks_result
+	$(RM) -r a.out
 
 re : fclean all
 
