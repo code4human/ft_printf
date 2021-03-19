@@ -23,7 +23,7 @@
 ** to compile it with the flag -std=c99.
 */
 
-void				*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t			i;
 	unsigned char	*char_dst;

@@ -18,12 +18,13 @@
 ** void		*calloc(size_t count, size_t size);
 */
 
-void				*ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
 	void			*res;
 	unsigned char	*char_res;
 
-	if (!(res = malloc(count * size)))
+	res = malloc(count * size);
+	if (!res)
 		return (NULL);
 	char_res = (unsigned char *)res;
 	ft_bzero(char_res, (count * size));

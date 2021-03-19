@@ -18,7 +18,7 @@
 ** char *strrchr(const char *s, int c);
 */
 
-char		*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	size_t	s_len;
 	char	*char_s;

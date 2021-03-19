@@ -23,16 +23,16 @@
 ** with your library.
 */
 
-static	int		ft_is_white_space(const char *c)
+static	int	ft_is_white_space(const char *c)
 {
 	if (*c == ' ' || *c == '\n' || *c == '\r'
-			|| *c == '\t' || *c == '\f' || *c == '\v')
+		|| *c == '\t' || *c == '\f' || *c == '\v')
 		return (1);
 	else
 		return (0);
 }
 
-static	int		ft_is_plus_minus(const char *c)
+static	int	ft_is_plus_minus(const char *c)
 {
 	if (*c == '+' || *c == '-')
 		return (1);
@@ -40,7 +40,7 @@ static	int		ft_is_plus_minus(const char *c)
 		return (0);
 }
 
-static	int		ft_is_number(const char *c)
+static	int	ft_is_number(const char *c)
 {
 	if (*c >= '0' && *c <= '9')
 		return (1);
@@ -48,10 +48,10 @@ static	int		ft_is_number(const char *c)
 		return (0);
 }
 
-int				ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr)
 {
-	int sign;
-	int res;
+	int	sign;
+	int	res;
 
 	sign = 1;
 	res = 0;

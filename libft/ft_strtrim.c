@@ -40,7 +40,8 @@ static	bool	ft_is_blank(int i, int len, char **s3)
 {
 	if (i >= len)
 	{
-		if (!(*s3 = (char *)malloc(sizeof(char))))
+		*s3 = (char *)malloc(sizeof(char));
+		if (!*s3)
 			return (false);
 		**s3 = '\0';
 		return (true);
@@ -48,7 +49,7 @@ static	bool	ft_is_blank(int i, int len, char **s3)
 	return (false);
 }
 
-char			*ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t		i;
 	size_t		len;

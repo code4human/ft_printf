@@ -18,7 +18,7 @@
 ** int	strncmp(const char *s1, const char *s2, size_t n);
 */
 
-int					ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t			i;
 	unsigned char	*u1;
@@ -29,7 +29,11 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n)
 	if ((u1 == NULL) && (u2 == NULL))
 		return (0);
 	else if ((u1 == NULL) || (u2 == NULL))
-		return (u1 == NULL ? -1 : 1);
+	{
+		if (u1 == NULL)
+			return (-1);
+		return (1);
+	}
 	i = 0;
 	while (((u1[i] != '\0') || (u2[i] != '\0')) && (i < n))
 	{

@@ -23,7 +23,7 @@
 ** to compile it with the flag -std=c99.
 */
 
-size_t		ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 	size_t	init_dstsize;

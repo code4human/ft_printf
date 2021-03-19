@@ -19,14 +19,19 @@
 
 static long	ft_abs(long nbr)
 {
-	return ((nbr < 0) ? -nbr : nbr);
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
 }
 
 static int	ft_len(long nbr)
 {
 	int	len;
 
-	len = (nbr <= 0) ? 1 : 0;
+	if (nbr <= 0)
+		len = 1;
+	else
+		len = 0;
 	while (nbr != 0)
 	{
 		nbr = nbr / 10;
@@ -35,13 +40,16 @@ static int	ft_len(long nbr)
 	return (len);
 }
 
-char		*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	int		len;
 	int		sign;
 	char	*c;
 
-	sign = (n < 0) ? -1 : 1;
+	if (n < 0)
+		sign = -1;
+	else
+		sign = 1;
 	len = ft_len(n);
 	c = (char *)malloc(sizeof(char) * len + 1);
 	if (c == NULL)

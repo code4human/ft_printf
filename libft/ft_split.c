@@ -22,7 +22,7 @@
 ** with your library.
 */
 
-static char		**ft_malloc_error(char **result)
+static char	**ft_malloc_error(char **result)
 {
 	size_t		idx2;
 
@@ -58,7 +58,7 @@ static size_t	ft_word_break(char const *s, char c)
 	return (n_break);
 }
 
-static char		*ft_word_cpy(char *word, size_t word_len,
+static char	*ft_word_cpy(char *word, size_t word_len,
 					char const *s, int pre_idx1)
 {
 	size_t		idx3;
@@ -73,7 +73,7 @@ static char		*ft_word_cpy(char *word, size_t word_len,
 	return (word);
 }
 
-static char		**ft_word_malloc(char **result,
+static char	**ft_word_malloc(char **result,
 				size_t n_break, char const *s, char c)
 {
 	size_t		idx2;
@@ -91,7 +91,8 @@ static char		**ft_word_malloc(char **result,
 		pre_idx1 = idx1;
 		while (s[idx1] && s[idx1++] != c)
 			word_len++;
-		if (!(result[idx2] = (char *)malloc(sizeof(char) * (word_len + 1))))
+		result[idx2] = (char *)malloc(sizeof(char) * (word_len + 1));
+		if (!result[idx2])
 			return (ft_malloc_error(result));
 		ft_word_cpy(result[idx2], word_len, s, pre_idx1);
 		word_len = 0;
@@ -101,7 +102,7 @@ static char		**ft_word_malloc(char **result,
 	return (result);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	size_t		n_break;
 	char		**result;
@@ -109,7 +110,8 @@ char			**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	n_break = ft_word_break(s, c);
-	if (!(result = (char **)malloc(sizeof(char *) * (n_break + 1))))
+	result = (char **)malloc(sizeof(char *) * (n_break + 1));
+	if (!result)
 		return (NULL);
 	result[n_break] = NULL;
 	ft_word_malloc(result, n_break, s, c);

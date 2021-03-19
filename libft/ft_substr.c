@@ -25,7 +25,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (s == NULL)
 		return (NULL);
-	if (!(substring = (char *)malloc(sizeof(char) * (len + 1))))
+	substring = (char *)malloc(sizeof(char) * (len + 1));
+	if (!substring)
 		return (NULL);
 	s_len = ft_strlen(s);
 	i = 0;
