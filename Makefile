@@ -60,7 +60,7 @@ $(LIBFT):
 clean:
 	$(RM) $(OBJS)
 	$(MAKE) -C ./libft clean
-	@rmdir $(OBJS_DIR)
+	@$(RM) -r $(OBJS_DIR)
 
 fclean:
 	$(RM) $(NAME)
